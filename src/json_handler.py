@@ -14,7 +14,7 @@ def read_json(file):
     return data
 
 def write_json(data, file):
-    with open(file, 'w') as f:
+    with open(file + ".json", 'w') as f:
         json.dump(data, f, indent=4)
     return
 

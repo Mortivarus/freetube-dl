@@ -7,9 +7,9 @@ Created on Mon Apr 28 13:15:35 2025
 """
 import json
 import json_handler as jh
+import file_handler as fh
 
-
-file = "/home/mortivarus/Desktop/freetube-playlists-2025-04-28.db"
+file = ""
 
  
 def load_db(file):
@@ -22,9 +22,11 @@ def export_playlists(playlists):
     for i in playlists:
         name = i['playlistName']
         name = name.replace("/", "-").replace(" ", "-")
-        path = f"../playlists/{name}.json"
+        path = f"../playlists/{name}"
         videos = i['videos']
-        jh.write_json(videos, path)
+        # jh.write_json(videos, path)
+        vid_ids = ["https://youtu.be/" + i['videoId'] for i in videos]
+        fh.write_file(path, vid_ids)
     
 
 playlists = load_db(file)

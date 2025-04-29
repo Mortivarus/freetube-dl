@@ -10,7 +10,7 @@ import subprocess
 
 playlists_folder = "../playlists/"
 downloads_folder = "../downloads/"
-playlist = "Electronic"
+playlist = "Pop"
 
 data = jh.read_json(playlists_folder + playlist + ".json")
 
@@ -27,5 +27,5 @@ for i in data:
 
 
 for i in videos:
-    subprocess.run(f"yt-dlp -x {i['link']} -P {downloads_folder}{playlist} --output '%(title)s.%(ext)s'", shell=True)
+    subprocess.run(f"yt-dlp -x {i['link']} -c -P {downloads_folder}{playlist} --output '%(title)s.%(ext)s'", shell=True)
 
